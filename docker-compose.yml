@@ -7,3 +7,21 @@ services:
       - .:/code
     ports:
       - 8000:8000
+    depends_on:
+      - db
+    networks:
+      - djangonetworks
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - 5432:5432
+    networks:
+      - djangonetworks
+    restart: always
+
+networks:
+  djangonetworks:
+    driver: bridge
