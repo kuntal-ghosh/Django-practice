@@ -10,18 +10,18 @@ class Promotion(models.Model):
     description=models.CharField(max_length=255)
     discount=models.DecimalField(max_digits=6,decimal_places=2)
 class Product(models.Model):
-    CATEGORY_ELECTRONICS="ELECTRONICS"
-    CLOTHING="Clothing"
-    CATEGORIES=[ 
-    (CATEGORY_ELECTRONICS, "ElectronICS"),
-    (CLOTHING, "Clothing"),
-]
+#     CATEGORY_ELECTRONICS="ELECTRONICS"
+#     CLOTHING="Clothing"
+#     CATEGORIES=[ 
+#     (CATEGORY_ELECTRONICS, "ElectronICS"),
+#     (CLOTHING, "Clothing"),
+# ]
     slug=models.SlugField(default="-")
     name = models.CharField(max_length=255)
     description = models.TextField()
     price=models.DecimalField(max_digits=6,decimal_places=2)
     stock_quantity = models.IntegerField()
-    category=models.CharField(max_length=255,choices=CATEGORIES,default=CLOTHING)
+    category=models.CharField(max_length=255)
     # manufacturer = models.ForeignKey
     created_at = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True)
@@ -35,7 +35,7 @@ class User(models.Model):
     email=models.EmailField(unique=True)
     password = models.CharField(max_length=30)
     first_name= models.CharField(max_length=255)
-    last_name= models.CharField(255)
+    last_name= models.CharField(max_length=255)
     # address=models.CharField(max_length=200)
     phone_number=models.CharField(max_length=255)   
     birth_date=models.DateField(null=True) 
@@ -49,7 +49,7 @@ class Order(models.Model):
           (COMPLETE,"Complete"),
           (FAILED,"Failed")
       ]
-    status=models.CharField(choices=PAYMENT_STATUS)
+    status=models.CharField(max_length=255,choices=PAYMENT_STATUS)
     order_date=models.DateTimeField(auto_now=True)
     total_amount=models.DecimalField(max_digits=6,decimal_places=2)
     placed_at=models.DateTimeField(auto_now_add=True)

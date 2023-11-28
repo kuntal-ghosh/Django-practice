@@ -13,11 +13,16 @@ services:
       - djangonetworks
 
   db:
-    image: postgres
+    image: mysql:8
+    container_name: my-mysql-container
     environment:
-      POSTGRES_PASSWORD: postgres
+      - MYSQL_DATABASE='storefront'
+      - MYSQL_USER='root'
+      - MYSQL_PASSWORD='123456'
+      - MYSQL_ROOT_PASSWORD='Karnob@711'
+      - MYSQL_HOST=''
     ports:
-      - :5432
+      - :3306
     networks:
       - djangonetworks
     restart: always
