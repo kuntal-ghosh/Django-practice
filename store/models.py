@@ -16,6 +16,7 @@ class Product(models.Model):
     (CATEGORY_ELECTRONICS, "ElectronICS"),
     (CLOTHING, "Clothing"),
 ]
+    slug=models.SlugField(default="-")
     name = models.CharField(max_length=255)
     description = models.TextField()
     price=models.DecimalField(max_digits=6,decimal_places=2)
