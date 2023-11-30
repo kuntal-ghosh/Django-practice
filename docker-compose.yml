@@ -15,13 +15,16 @@ services:
   db:
     image: mysql:8.2.0
     container_name: my-mysql-container
+    volumes:
+      - ./mysql:/var/lib/mysql
+    env_file:
+      - ./.env.dev
     environment:
-      - MYSQL_ALLOW_EMPTY_PASSWORD=true
       - MYSQL_DATABASE='storefront'
-      - MYSQL_USER='newuser'
-      - MYSQL_PASSWORD='password'
+      - MYSQL_USER='root'
+      - MYSQL_PASSWORD='Karnob@711'
       - MYSQL_HOST='localhost'
-      - MYSQL_ROOT_PASSWORD=""
+      - MYSQL_ROOT_PASSWORD='Karnob@711'
     ports:
       - :3306
     networks:
